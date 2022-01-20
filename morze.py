@@ -31,11 +31,16 @@ MorseCode = {'A': '.-',
 
 # return encoded text
 def encode_to_morse(text: str) -> str:
+  
+  # буквы разделены плобелом. 
+  # слова разделены "\n". 
     return text
 
 
 # return decoded text
 def decode_from_morse(code: str):
+  # буквы должны быть разделены плобелом. 
+  # слова должны быть разделены "\n". 
     return code
 
 
