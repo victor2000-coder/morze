@@ -34,7 +34,6 @@ def encode_to_morse(text: str) -> str:
   
   # буквы должны быть разделены плобелом. 
   # слова должны быть разделены "\n". 
-  # функция check_for_encodable(text) проверяет на то, что text имеет только латинские символы и пробел
     return text
 
 
@@ -47,17 +46,17 @@ def decode_from_morse(code: str):
 
 
 # return True, if all letters are latin
-def check_for_encodable(text):
+def check_for_latin_encodable(text):
     for ch in text:
-        if not ord("A") <= ord(ch) <= ord("z"):
+        if ch not in MorseCode.keys():
             return False
     return True
 
 
-# encode and print next user input 
+# encode and print next user input
 def encode_input():
     inp = input("Please, use only latin alphabet!!! I will encode this text: ")
-    while check_for_encodable(inp):
+    while check_for_latin_encodable(inp):
         inp = input("\nPlease, use only latin alphabet!!! Try again: ")
     print(encode_to_morse(inp))
 
