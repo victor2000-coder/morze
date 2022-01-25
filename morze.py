@@ -28,21 +28,57 @@ MorseCode = {'A': '.-',
              ' ': '\n',
              }
 
+ReverseMorseCode = {'.-': 'A',
+                    '-...': 'B',
+                    '-.-.': 'C',
+                    '-..': 'D',
+                    '.': 'E',
+                    '..-.': 'F',
+                    '--.': 'G',
+                    '....': 'H',
+                    '..': 'I',
+                    '.---': 'J',
+                    '-.-': 'K',
+                    '.-..': 'L',
+                    '--': 'M',
+                    '-.': 'N',
+                    '---': 'O',
+                    '.--.': 'P',
+                    '--.-': 'Q',
+                    '.-.': 'R',
+                    '...': 'S',
+                    '-': 'T',
+                    '..-': 'U',
+                    '...-': 'V',
+                    '.--': 'W',
+                    '-..-': 'X',
+                    '-.--': 'Y',
+                    '--..': 'Z',
+                    }
+
 
 # return encoded text
 def encode_to_morse(text: str) -> str:
-  
-  # буквы должны быть разделены плобелом. 
-  # слова должны быть разделены "\n". 
-    return text
+    # буквы должны быть разделены плобелом.
+    # слова должны быть разделены "\n".
+    result = ""
+    for s in text.upper().split():
+        for c in s:
+            result += MorseCode[c] + " "
+        result += "\n"
+    return result
 
 
 # return decoded text
 def decode_from_morse(code: str):
-  
-  # буквы разделены плобелом. 
-  # слова разделены "\n". 
-    return code
+    # буквы разделены плобелом.
+    # слова разделены "\n".
+    result = ""
+    for s in code.split("\n"):
+        for c in s.split():
+            result += ReverseMorseCode[c]
+        result += " "
+    return result.strip()
 
 
 # return True, if all letters are latin
